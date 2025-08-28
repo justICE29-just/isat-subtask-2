@@ -17,6 +17,7 @@ std::string decimalToBinary(int n) {
 }
 
 // Function 2: Binary to Decimal with validation
+fix: add binary input validation and format hexadecimal output to uppercase
 int binaryToDecimal(const std::string& binary) {
     int decimal = 0;
     int base = 1;
@@ -86,7 +87,6 @@ void handleRandomBinary() {
 
 // Main Menu-Driven Program
 int main() {
-implement menu-drive converter program with basic options
     srand(time(0)); // Seed for random number generation
     int choice;
 
