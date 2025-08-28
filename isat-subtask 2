@@ -46,7 +46,6 @@ int hexadecimalToDecimal(const std::string& hex) {
 }
 
 // Menu Case Handlers
-refact: split menu options into separe handler functions
 void handleHexToDecimal() {
     std::string hex;
     std::cout << "Enter a hexadecimal number: ";
