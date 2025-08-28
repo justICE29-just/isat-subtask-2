@@ -1,0 +1,115 @@
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <cstdlib>
+#include <ctime>
+#include <stdexcept>
+
+// Function 1: Decimal to Binary
+std::string decimalToBinary(int n) {
+    if (n == 0) return "0";
+    std::string binary = "";
+    while (n > 0) {
+        binary = (n % 2 == 0 ? "0" : "1") + binary;
+        n /= 2;
+    }
+    return binary;
+}
+
+// Function 2: Binary to Decimal with validation
+int binaryToDecimal(const std::string& binary) {
+    int decimal = 0;
+    int base = 1;
+    for (int i = binary.length() - 1; i >= 0; --i) {
+        if (binary[i] == '1') {
+            decimal += base;
+        } else if (binary[i] != '0') {
+            throw std::invalid_argument("Invalid binary digit found.");
+        }
+        base *= 2;
+    }
+    return decimal;
+}
+
+// Function 3: Decimal to Hexadecimal (uppercase)
+std::string decimalToHexadecimal(int n) {
+    std::stringstream ss;
+    ss << std::uppercase << std::hex << n;
+    return ss.str();
+}
+
+// Function 4: Hexadecimal to Decimal
+int hexadecimalToDecimal(const std::string& hex) {
+    int decimal = 0;
+    std::istringstream(hex) >> std::hex >> decimal;
+    return decimal;
+}
+
+// Menu Case Handlers
+void handleHexToDecimal() {
+    std::string hex;
+    std::cout << "Enter a hexadecimal number: ";
+    std::cin >> hex;
+    std::cout << "Decimal representation: " << hexadecimalToDecimal(hex) << "\n";
+}
+
+void handleBinaryToDecimal() {
+    std::string binary;
+    std::cout << "Enter a binary number: ";
+    std::cin >> binary;
+    try {
+        std::cout << "Decimal representation: " << binaryToDecimal(binary) << "\n";
+    } catch (std::invalid_argument& e) {
+        std::cerr << "Error: " << e.what() << "\n";
+    }
+}
+
+void handleDecimalToBinary() {
+    int decimal;
+    std::cout << "Enter a decimal number: ";
+    std::cin >> decimal;
+    std::cout << "Binary representation: " << decimalToBinary(decimal) << "\n";
+}
+
+void handleDecimalToHex() {
+    int decimal;
+    std::cout << "Enter a decimal number: ";
+    std::cin >> decimal;
+    std::cout << "Hexadecimal representation: " << decimalToHexadecimal(decimal) << "\n";
+}
+
+void handleRandomBinary() {
+    int randomNumber = rand() % 101; // Random number between 0 and 100
+    std::cout << "Random decimal number: " << randomNumber << "\n";
+    std::cout << "Binary representation: " << decimalToBinary(randomNumber) << "\n";
+}
+
+// Main Menu-Driven Program
+int main() {
+    srand(time(0)); // Seed for random number generation
+    int choice;
+
+    do {
+        std::cout << "\n===== Converter Menu =====\n";
+        std::cout << "1. Convert Hexadecimal to Decimal\n";
+        std::cout << "2. Convert Binary to Decimal\n";
+        std::cout << "3. Convert Decimal to Binary\n";
+        std::cout << "4. Convert Decimal to Hexadecimal\n";
+        std::cout << "5. Generate and convert random integers to binary\n";
+        std::cout << "6. Exit\n";
+        std::cout << "Enter your choice (1-6): ";
+        std::cin >> choice;
+
+        switch (choice) {
+            case 1: handleHexToDecimal(); break;
+            case 2: handleBinaryToDecimal(); break;
+            case 3: handleDecimalToBinary(); break;
+            case 4: handleDecimalToHex(); break;
+            case 5: handleRandomBinary(); break;
+            case 6: std::cout << "Exiting the program.\n"; break;
+            default: std::cout << "Invalid choice. Please enter a number between 1 and 6.\n";
+        }
+    } while (choice != 6);
+
+    return 0;
+}
