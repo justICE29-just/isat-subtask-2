@@ -6,6 +6,7 @@
 #include <stdexcept>
 
 // Function 1: Decimal to Binary
+feat: add decimal-binary and binary-decimal conversion functions
 std::string decimalToBinary(int n) {
     if (n == 0) return "0";
     std::string binary = "";
