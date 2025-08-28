@@ -6,8 +6,6 @@
 #include <stdexcept>
 
 // Function 1: Decimal to Binary
-add decimal-binary and binary-decimal convertion function
-feat: add decimal-binary and binary-decimal conversion functions
 std::string decimalToBinary(int n) {
     if (n == 0) return "0";
     std::string binary = "";
@@ -34,6 +32,7 @@ int binaryToDecimal(const std::string& binary) {
 }
 
 // Function 3: Decimal to Hexadecimal (uppercase)
+add decimal-hexadecimal and hexadecimal-decimal
 std::string decimalToHexadecimal(int n) {
     std::stringstream ss;
     ss << std::uppercase << std::hex << n;
