@@ -17,7 +17,6 @@ std::string decimalToBinary(int n) {
 }
 
 // Function 2: Binary to Decimal with validation
-fix: add binary input validation and format hexadecimal output to uppercase
 int binaryToDecimal(const std::string& binary) {
     int decimal = 0;
     int base = 1;
@@ -47,6 +46,7 @@ int hexadecimalToDecimal(const std::string& hex) {
 }
 
 // Menu Case Handlers
+refact: split menu options into separe handler functions
 void handleHexToDecimal() {
     std::string hex;
     std::cout << "Enter a hexadecimal number: ";
